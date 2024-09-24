@@ -1,20 +1,20 @@
-T = int(input())
+t = int(input())
 
-for tc in range(1, T+1):
-    N = int(input())
-    a = [list(map(int, input())) for _ in range(N)]
-    ans = 0
-    s, e = N // 2, N // 2
-    
-    for i in range(N):
-        for j in range(s, e+1):
-            ans += a[i][j]
+for tc in range(1, t + 1) :
+    n = int(input())
+    data = [list(map(int, input())) for _ in range(n)]
+    start, end = n // 2, n // 2
 
-        if i < N // 2:
-            s -= 1
-            e += 1
-        else:
-            s += 1
-            e -= 1
+    result = 0
+    for i in range(n) :
+        for j in range(start, end + 1) :
+            result += data[i][j]
 
-    print(f'#{tc} {ans}')
+        if i < n // 2 :
+            start -= 1
+            end += 1
+        else :
+            start += 1
+            end -= 1
+
+    print('#%d %d' % (tc, result))
