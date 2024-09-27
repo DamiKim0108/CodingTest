@@ -3,15 +3,16 @@ def dfs(index, sum = 0):
 
     if sum == K:
         count +=1
-        return 
+        return
 
     if index == N:
         return
 
-    dfs(index+1, sum + data[index])
+    dfs(index+1, sum + data[index]) 
     dfs(index+1, sum) 
 
 tc = int(input())
+
 for i in range(tc):
     N, K = map(int, input().split())
     count = 0
