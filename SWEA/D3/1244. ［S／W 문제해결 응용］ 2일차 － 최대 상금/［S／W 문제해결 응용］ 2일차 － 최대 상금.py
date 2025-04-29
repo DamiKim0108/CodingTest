@@ -9,7 +9,7 @@ def dfs(cnt):
     for i in range(len(num)):
         for j in range(i+1,len(num)):
             num[i], num[j] = num[j], num[i]
-            temp = ''.join(num)
+            temp = int(''.join(num))
             
             if (temp, cnt) not in visited:
                 visited[(temp, cnt)] = 0
