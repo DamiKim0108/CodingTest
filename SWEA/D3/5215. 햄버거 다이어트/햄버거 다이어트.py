@@ -1,25 +1,20 @@
-def dfs(idx, s_sum, k_sum):
-    global max_score
-
-    if k_sum > L:
-        return
-    if max_score < s_sum:
-        max_score = s_sum
-    if idx == N:
-        return
-    score, kcal = ingredients[idx]
-    
-    dfs(idx+1, s_sum+score, k_sum+kcal)
-    dfs(idx+1, s_sum, k_sum)
-
 T = int(input())
-
+def select(data, L):
+    N = len(data)
+    dp = [[0 for _ in range(L+1)] for _ in range(N+1)]
+    for i in range(1, N+1):
+        for j in range(1, L+1):
+            value, cal = data[i-1]
+            if cal <= j:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-cal] + value)
+            else:
+                dp[i][j] = dp[i-1][j]
+    return dp[N][L]          
+    
 for tc in range(1, T+1):
     N, L = map(int, input().split())
+    data = [list(map(int, input().split())) for _ in range(N)]
 
-    ingredients = [list(map(int, input().split())) for _ in range(N)]
-
-    max_score = 0
-    dfs(0, 0, 0)
-    print('#{} {}'.format(tc, max_score))
+    result = select(data, L)
+    print("#{} {}".format(tc, result))
 
