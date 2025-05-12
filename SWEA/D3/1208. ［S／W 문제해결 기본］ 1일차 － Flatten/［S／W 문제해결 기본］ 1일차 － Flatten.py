@@ -8,14 +8,8 @@ for tc in range(1, 11):
     height = list(map(int, input().split()))
 
     for j in range(count):
-        max_height = max(height)
-        min_height = min(height)
-
-        max_idx = height.index(max_height)
-        min_idx = height.index(min_height)
-
-        height[max_idx] -= 1
-        height[min_idx] += 1
+        height[height.index(max(height))] -= 1
+        height[height.index(min(height))] += 1
 
     answer = max(height) - min(height)
     print('#', tc, " ", answer, sep='')
