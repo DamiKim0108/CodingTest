@@ -1,19 +1,16 @@
-T = 10
-
-for tc in range(1, T+1):
-    n = int(input())
-
-    table = [list(map(int, input().split())) for _ in range(n)]
-    ans = 0
-    
-    for j in range(n):
-        state = 0
-        for i in range(n):
-            if table[i][j] == 1:
-                state = 1
-            if table[i][j] == 2 and state == 1:
-                ans += 1
-                state = 0
-    print(f'#{tc} {ans}')
 
 
+for tc in range(1, 11):
+    N = int(input())
+    graph = [list(map(int, input().split())) for _ in range(N)]
+    count = 0
+
+    for j in range(N):
+        flag = 0
+        for i in range(N):
+            if graph[i][j] == 1:
+                flag = 1
+            if graph[i][j] == 2 and flag == 1:
+                count += 1
+                flag = 0
+    print(f'#{tc} {count}')
